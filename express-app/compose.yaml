@@ -1,1 +1,15 @@
 # Add code here
+
+services:
+  app:
+    build:
+      context: ./express-app
+      dockerfile: Dockerfile
+    container_name: express_app
+    restart: unless-stopped
+    ports:
+      # Host:Container port mapping
+      - "4567:4567"
+    environment:
+      - PORT=4567
+      - NODE_ENV=production
