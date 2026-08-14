@@ -1,0 +1,38 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: example-template
+  title: Example Template
+  description: An example template running only the custom file creation action
+spec:
+  owner: guests
+  type: service
+
+  parameters:
+    - title: File Information
+      required:
+        - filename
+      properties:
+        filename:
+          title: File Name
+          type: string
+          description: Name of the file to create in the workspace
+          default: sample.txt
+        content:
+          title: File Content
+          type: string
+          description: Content to put in the file
+          default: Created via my:custom:action
+
+  steps:
+    - id: custom-file-create
+      name: Create File in Workspace
+      action: my:custom:action
+      input:
+        filename: ${{ parameters.filename }}
+        content: ${{ parameters.content }}
+
+  output:
+    links:
+      - title: Workspace File
+        url: ${{ steps['custom-file-create'].output.filePath }}
