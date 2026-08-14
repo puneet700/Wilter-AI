@@ -1,0 +1,5 @@
+Running the Application
+To build and run the container in the background:
+
+Bash
+docker compose up -d --build
