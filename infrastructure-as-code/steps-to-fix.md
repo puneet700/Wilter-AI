@@ -1,5 +1,6 @@
 
 
+
 ## 1. Step 1: Refactor from `count` to `for_each`
 By switching from `count` to `for_each`, each resource instance is tied to an explicit identifier (e.g., `"0"`, `"2"`, `"3"`, `"4"`) rather than a consecutive array index.
 
@@ -9,6 +10,7 @@ variable "files" {
   type    = set(string)
   default = ["0", "2", "3", "4"]
 }
+
 
 resource "local_file" "foo" {
   for_each = var.files
