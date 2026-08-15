@@ -2,6 +2,7 @@ import json
 import sys
 import os
 
+
 def check_dict_diff(before: dict, after: dict):
     """Returns a set of keys that differ between two dictionaries."""
     before = before or {}
